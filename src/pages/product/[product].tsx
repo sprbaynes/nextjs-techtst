@@ -28,7 +28,7 @@ export async function getStaticPaths() {
   const paths:any = [];
   const getStaticPathsObj = {
       paths:paths,
-      fallback:false
+      fallback:'blocking'
   }
   
   const res = await fetch(process.env.NEXT_PUBLIC_API_URL || '')
