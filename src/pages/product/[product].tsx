@@ -48,6 +48,11 @@ export async function getStaticPaths() {
 
 export async function getStaticProps<ProductProps>(context: any) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}${context.params.product}`)
+
+  if (res.status === 404) {
+    return { notFound: true }
+  }
+
   const product = await res.json()
 
   return {
